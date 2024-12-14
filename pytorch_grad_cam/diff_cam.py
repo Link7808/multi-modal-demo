@@ -65,15 +65,12 @@ class DiffCAM(BaseCAM):
                 class_k_idx = int(sorted_indices[i, k - 1])  # 第 k 高预测类别
                 target = DiffCategoryTarget(class1_idx, class_k_idx, alpha)
                 targets.append(target)
-                print("目标类别为：")
                 print(class1_idx, class_k_idx)
 
         if self.uses_gradients:
             self.model.zero_grad()
             if isinstance(outputs, (list, tuple)):
                 loss = sum([target(output) for target, output in zip(targets, outputs)])
-                print('损失为：')
-                print(loss)
             else:
                 loss = sum([target(output) for target, output in zip(targets, [outputs])])
             loss.backward(retain_graph=True)
