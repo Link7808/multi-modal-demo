@@ -14,10 +14,10 @@ class DiffCategoryTarget:
         wk = model_output[..., self.class_k_idx]
         return (w1 - wk) + self.alpha * wk
 
-class DiffCAM(BaseCAM):
+class FinerCAM(BaseCAM):
     def __init__(self, model, target_layers, use_cuda=False,
                  reshape_transform=None, compute_input_gradient=False):
-        super(DiffCAM, self).__init__(model, target_layers, use_cuda,
+        super(FinerCAM, self).__init__(model, target_layers, use_cuda,
                                       reshape_transform, compute_input_gradient)
     
     def __call__(self,
