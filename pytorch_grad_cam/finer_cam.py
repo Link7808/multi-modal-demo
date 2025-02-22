@@ -61,8 +61,8 @@ class FinerCAM(BaseCAM):
             sorted_indices = np.argsort(-output_data, axis=-1)
             targets = []
             for i in range(sorted_indices.shape[0]):
-                class1_idx = int(sorted_indices[i, 0])  # 最高预测类别
-                class_k_idx = int(sorted_indices[i, k - 1])  # 第 k 高预测类别
+                class1_idx = int(sorted_indices[i, 0])  
+                class_k_idx = int(sorted_indices[i, k - 1]) 
                 target = DiffCategoryTarget(class1_idx, class_k_idx, alpha)
                 targets.append(target)
                 print(class1_idx, class_k_idx)
